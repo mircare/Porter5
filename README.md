@@ -18,7 +18,8 @@ or
 >$ wget http://distilldeep.ucd.ie/porter/data/Porter5.tgz<br/>$ tar zxvf Porter5.tgz<br/>$ python3 Porter5/Porter5.py -i Porter5/example/2FLGA.fasta
 
 ### Requirements
-1. HHblits (available at https://github.com/soedinglab/hh-suite/);
+1. Python3 (https://www.python.org/downloads/);
+1. HHblits (https://github.com/soedinglab/hh-suite/);
 1. uniprot20 (http://wwwuser.gwdg.de/~compbiol/data/hhsuite/databases/hhsuite_dbs/old-releases/uniprot20_2016_02.tgz).
 
 Optionally:
