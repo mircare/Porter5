@@ -1,9 +1,9 @@
-# Porter5
+# Porter5 
+### Light, fast and high quality prediction of protein secondary structure in 3 and 8 classes
 
 The web server of Porter5 is available at http://distilldeep.ucd.ie/porter/.  
 The datasets used are available at http://distilldeep.ucd.ie/porter/data/.
 
-Porter5 is a light, fast and high quality predictor of protein secondary structure in 3 and 8 classes.
 
 ## Reference
 Porter 5: state-of-the-art ab initio prediction of protein secondary structure in 3 and 8 classes
