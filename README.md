@@ -13,7 +13,7 @@ bioRxiv 289033; doi: https://doi.org/10.1101/289033
 
 
 ## Setup
->$ git clone git@github.com:mircare/Porter5.git
+>$ git clone https://github.com/mircare/Porter5/
 <br/>$ python3 Porter5/Porter5.py -i Porter5/example/2FLGA.fasta
 
 
