@@ -8,8 +8,7 @@
 import os
 import sys
 import math
-import re
-
+from numpy import ravel as np
 
 pattern = sys.argv[2] # alignment extension
 pattern1 = ".ann" # encoded alignment extension
@@ -119,8 +118,6 @@ if sequences > 1:
 for j in range(length):
     result[j][aa[lines[1][j]]] = 1.0
 
-
-# convert result (a list of lists) to a string and write out the result
-non_decimal = re.compile(r'[^\d.]+')
-f.write(non_decimal.sub(' ', str(result)) + "\n")
+# convert result (a list of lists) in a string and write out the result
+f.write(" ".join(map(str, np(result))) + "\n")
 f.close()
