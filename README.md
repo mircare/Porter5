@@ -2,7 +2,7 @@
 ### Light, fast and high quality prediction of protein secondary structure in 3 and 8 classes
 
 The web server of Porter 5 is available at http://distilldeep.ucd.ie/porter/.  
-The datasets used are available at http://distilldeep.ucd.ie/porter/data/.
+The train and test sets are available at http://distilldeep.ucd.ie/porter/data/.
 
 
 ### Reference
@@ -33,10 +33,10 @@ $ tar zxvf Porter5.tgz
 
 ## How to run Porter 5 with/without PSI-BLAST
 ```
-# Porter 5 looks for HHblits only (fast and accurate prediction)
+# To exploit HHblits only (for fast and accurate predictions)
 $ python3 Porter5/Porter5.py -i Porter5/example/2FLGA.fasta --cpu 4 --fast
 
-# Porter 5 looks for PSI-BLAST and HHblits (very accurate prediction)
+# To exploit both PSI-BLAST and HHblits (for very accurate predictions)
 $ python3 Porter5/Porter5.py -i Porter5/example/2FLGA.fasta --cpu 4
 ```
 
@@ -55,7 +55,7 @@ $ python3 Porter5/Porter5.py -i Porter5/example/2FLGA.fasta --cpu 4
 
 Reference: Table 1 in https://doi.org/10.1101/289033.
 
-### License
+## License
 This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
 
 Email us at gianluca[dot]pollastri[at]ucd[dot]ie if you wish to use it for purposes not permitted by the CC BY-NC-SA 4.0.
