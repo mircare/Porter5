@@ -1,8 +1,8 @@
 # Porter 5 
 ### Light, fast and high quality prediction of protein secondary structure in 3 and 8 classes
 
-The web server of Porter 5 is available at http://distilldeep.ucd.ie/porter/.
-The train and test sets are available at http://distilldeep.ucd.ie/porter/data/. 
+The web server of Porter 5 is available at http://distilldeep.ucd.ie/porter/.   
+The train and test sets are available at http://distilldeep.ucd.ie/porter/data/.
 
 More protein structure annotation predicted at http://distilldeep.ucd.ie/brewery/.
 
