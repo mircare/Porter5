@@ -1,9 +1,10 @@
 # Porter 5 
 ### Light, fast and high quality prediction of protein secondary structure in 3 and 8 classes
 
-The web server of Porter 5 is available at http://distilldeep.ucd.ie/porter/.  
-The train and test sets are available at http://distilldeep.ucd.ie/porter/data/.
+The web server of Porter 5 is available at http://distilldeep.ucd.ie/porter/.
+The train and test sets are available at http://distilldeep.ucd.ie/porter/data/. 
 
+More protein structure annotation predicted at http://distilldeep.ucd.ie/brewery/.
 
 ### Reference
 Porter 5: fast, state-of-the-art ab initio prediction of protein secondary structure in 3 and 8 classes<br>
@@ -40,7 +41,7 @@ $ python3 Porter5/Porter5.py -i Porter5/example/2FLGA.fasta --cpu 4 --fast
 $ python3 Porter5/Porter5.py -i Porter5/example/2FLGA.fasta --cpu 4
 ```
 
-## Performances on large independent test set
+## Performances in 3 states on large independent test set
 | Method | Q3 per AA | SOV per AA | Q3 per protein | SOV per protein |
 | :--- | :---: | :---: | :---: | :---: |
 | **Porter 5** | **83.81%** | **83.29%** | **84.32%** | **84.57%** |
@@ -54,6 +55,20 @@ $ python3 Porter5/Porter5.py -i Porter5/example/2FLGA.fasta --cpu 4
 | DeepCNF | 81.04% | 80.84% | 81.16% | 81.46% |
 
 Reference: Table 1 in https://doi.org/10.1101/289033.
+
+
+## Performances in 8 states on large independent test set in 
+| Method | Q8 per AA | SOV per AA | Q8 per protein | SOV per protein |
+| :--- | :---: | :---: | :---: | :---: |
+| **Brewery** | **73.02%** | **76.83%** | **73.92%** | **77.67%** |
+| SSpro 5 *with templates* | 71.91% | 78.55% | 74.46% | 77.84% |
+| **Brewery *HHblits only*** | **71.8%** | **75.45%** | **72.83%** | **76.46%** |
+| RaptorX-Property | 70.74% | 74.88% | 71.78% | 75.84% |
+| DeepCNF | 69.76% | 73.6% | 70.14% | 73.93% |
+| SSpro5 *ab initio* | 68.85% | 72.26% | 69.27% | 73.06% |
+
+Reference: Table 2 in https://doi.org/10.1101/289033.
+
 
 ## License
 This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
