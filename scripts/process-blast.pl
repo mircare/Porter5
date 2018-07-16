@@ -12,7 +12,10 @@ $fasta=$ARGV[2];
 open(fast,"<$fasta");
 @testo_temp=<fast>;
 shift(@testo_temp);
-$truequery=shift(@testo_temp);
+while (@testo_temp) {
+	chomp(@testo_temp);
+	$truequery.=shift(@testo_temp);
+}
 chomp($truequery);
 close(fast);
 
