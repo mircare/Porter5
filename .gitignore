@@ -1,0 +1,3 @@
+# Compiled Object files
+scripts/Predict_BRNN/*.o
+scripts/Predict_BRNN/Predict
