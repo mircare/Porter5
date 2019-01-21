@@ -1,10 +1,10 @@
-# Encode the passed MSA using a weighting scheme derived from Krogh et all (1995).
-# Duplicates are filtered and external gap are skipped.
-# None gap is considered to calculate the weight of the sequence.
-# Clipping of the AA in the query sequence is implemented as final step as in https://doi.org/10.1101/289033.
+# Encode alignment file using a weighting scheme derived from Krogh et all (1995).
+# Duplicates are filtered and external gaps are skipped.
+# No gap is considered to calculate the weight of the sequence.
+# Clipping of the AA in the query sequence is implemented as in https://doi.org/10.1101/289033.
 
 # Usage: python3 process-alignment.py alignment_file file_extension
-# Expected input: MSA with 1 line header followed by primary sequences only.
+# Expected input: 1 line header followed by primary sequences (and "." gaps) only.
 
 import os
 import sys
