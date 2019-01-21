@@ -19,7 +19,6 @@ if not args.input:
 
 # save protein path and name, and current PATH
 filename = "".join(args.input)
-pid = filename.replace(".fasta", "")
 path = os.path.abspath(sys.argv[0].replace("Porter5.py","scripts/"))
 predict = path+"/Predict_BRNN/Predict"
 models = path+"/Predict_BRNN/models/"
@@ -53,9 +52,9 @@ print("~~~~~~~~~ Prediction of "+filename+" started ~~~~~~~~~")
 time0 = time.time()
 if not args.fast:
     ### run PSI-BLAST and process output
-    os.system('%s -query %s -out_pssm %s.chk -num_threads %d -dbsize 0 -num_alignments 300000 -num_iterations 2 -evalue 0.001 -inclusion_ethresh 1e-3 -pseudocount 10 -comp_based_stats 1 -db %s >> %s.log' % (config['DEFAULT']['psiblast'], filename, pid, args.cpu, config['DEFAULT']['uniref90'], pid))
-    os.system('%s -in_pssm %s.chk -out %s.blastpgp -num_threads %d -dbsize 0 -num_alignments 300000 -num_iterations 1 -evalue 0.001 -inclusion_ethresh 1e-3 -comp_based_stats 1 -db %s >> %s.log 2>&1' % (config['DEFAULT']['psiblast'], pid, pid, args.cpu, config['DEFAULT']['uniref90'], pid))
-    os.system('%s/process-blast.pl %s.blastpgp %s.flatblast %s' % (path, pid, pid, filename))
+    os.system('%s -query %s -out_pssm %s.chk -num_threads %d -dbsize 0 -num_alignments 300000 -num_iterations 2 -evalue 0.001 -inclusion_ethresh 1e-3 -pseudocount 10 -comp_based_stats 1 -db %s >> %s.log' % (config['DEFAULT']['psiblast'], filename, filename, args.cpu, config['DEFAULT']['uniref90'], filename))
+    os.system('%s -in_pssm %s.chk -out %s.blastpgp -num_threads %d -dbsize 0 -num_alignments 300000 -num_iterations 1 -evalue 0.001 -inclusion_ethresh 1e-3 -comp_based_stats 1 -db %s >> %s.log 2>&1' % (config['DEFAULT']['psiblast'], filename, filename, args.cpu, config['DEFAULT']['uniref90'], filename))
+    os.system('%s/process-blast.pl %s.blastpgp %s.flatblast %s' % (path, filename, filename, filename))
 
     time1 = time.time()
     print('PSI-BLAST executed in %.2fs' % (time1-time0))
@@ -63,27 +62,27 @@ else:
     time1 = time.time()
 
 #### run HHblits and process output
-os.system('%s -d %s -i %s -opsi %s.psi -cpu %d -n 3 -maxfilt 150000 -maxmem 27 -v 2 2>> %s.log >> %s.log' % (config['DEFAULT']['hhblits'], config['DEFAULT']['uniprot20'], filename, pid, args.cpu, pid, pid))
-os.system('%s/process-psi.sh %s.psi' % (path, pid))
+os.system('%s -d %s -i %s -opsi %s.psi -cpu %d -n 3 -maxfilt 150000 -maxmem 27 -v 2 2>> %s.log >> %s.log' % (config['DEFAULT']['hhblits'], config['DEFAULT']['uniprot20'], filename, filename, args.cpu, filename, filename))
+os.system('%s/process-psi.sh %s.psi' % (path, filename))
 
 time2 = time.time()
 print('HHblits executed in %.2fs' % (time2-time1))
 
 ### encode alignments made with HHblits or PSI-BLAST
-os.system('python3 %s/process-alignment.py %s.flatpsi flatpsi %d' % (path, pid,args.cpu)) # generated with HHblits
+os.system('python3 %s/process-alignment.py %s.flatpsi flatpsi %d' % (path, filename, args.cpu)) # generated with HHblits
 aa = list("".join(line.strip() for line in open(filename, "r").readlines()[1:])) # get plain list of AA from FASTA
 length = len(aa)
 
-flatpsi_ann = open(pid+".flatpsi.ann", "r").readlines()
+flatpsi_ann = open(filename+".flatpsi.ann", "r").readlines()
 if not args.fast:
-    os.system('python3 %s/process-alignment.py %s.flatblast flatblast %d' % (path, pid, args.cpu)) # generated with PSI-BLAST
+    os.system('python3 %s/process-alignment.py %s.flatblast flatblast %d' % (path, filename, args.cpu)) # generated with PSI-BLAST
 
     ## concatenate the previous 2
-    flatblast_ann = open(pid+".flatblast.ann", "r").readlines()
+    flatblast_ann = open(filename+".flatblast.ann", "r").readlines()
 
     # write header, protein name, and length
-    flatblastpsi_ann = open(pid+".flatblastpsi.ann", "w")
-    flatblastpsi_ann.write("1\n44 3\n"+ pid +"\n"+ str(length) +"\n")
+    flatblastpsi_ann = open(filename+".flatblastpsi.ann", "w")
+    flatblastpsi_ann.write("1\n44 3\n"+ filename +"\n"+ str(length) +"\n")
 
     # concatenate
     tmp = flatblast_ann[4].strip().split(" ")
@@ -99,10 +98,10 @@ time3 = time.time()
 print('Alignments encoded in %.2fs' % (time3-time2))
 
 ### predict SS in 3 classes
-os.system('%s %smodelv8_ss3 %s.flatpsi.ann > /dev/null' % (predict, models, pid))
+os.system('%s %smodelv8_ss3 %s.flatpsi.ann > /dev/null' % (predict, models, filename))
 if not args.fast:
-    os.system('%s %smodelv7_ss3 %s.flatblast.ann > /dev/null' % (predict, models, pid))
-    os.system('%s %smodelv78_ss3 %s.flatblastpsi.ann > /dev/null' % (predict, models, pid))
+    os.system('%s %smodelv7_ss3 %s.flatblast.ann > /dev/null' % (predict, models, filename))
+    os.system('%s %smodelv78_ss3 %s.flatblastpsi.ann > /dev/null' % (predict, models, filename))
 
 time4 = time.time()
 print('Prediction in 3 classes made in %.2fs' % (time4-time3))
@@ -111,13 +110,13 @@ print('Prediction in 3 classes made in %.2fs' % (time4-time3))
 ### ensemble predictions and process output
 secstruc = {0 : "H", 1 : "E", 2 : "C"}
 SS = [0] * 3
-prediction = open(pid+".ss3", "w")
+prediction = open(filename+".ss3", "w")
 prediction.write("#\tAA\tSS\tHelix\tSheet\tCoil\n")
 
-prob_hh = list(map(float, open(pid+".flatpsi.ann.probsF", "r").readlines()[3].split()))
+prob_hh = list(map(float, open(filename+".flatpsi.ann.probsF", "r").readlines()[3].split()))
 if not args.fast:
-    prob_psi = list(map(float, open(pid+".flatblast.ann.probsF", "r").readlines()[3].split()))
-    prob_psihh = list(map(float, open(pid+".flatblastpsi.ann.probsF", "r").readlines()[3].split()))
+    prob_psi = list(map(float, open(filename+".flatblast.ann.probsF", "r").readlines()[3].split()))
+    prob_psihh = list(map(float, open(filename+".flatblastpsi.ann.probsF", "r").readlines()[3].split()))
 
     for i in range(length):
         for j in range(3):
@@ -138,8 +137,8 @@ prediction.close()
 def generate8statesANN(extension, prob, ann):
     input_size = int(ann[1].split()[0])
 
-    ss3 = open(pid+"."+extension+".ann+ss3", "w")
-    ss3.write("1\n"+str(input_size+3)+" 8\n"+ pid +"\n"+ str(length) +"\n")
+    ss3 = open(filename+"."+extension+".ann+ss3", "w")
+    ss3.write("1\n"+str(input_size+3)+" 8\n"+ filename +"\n"+ str(length) +"\n")
 
     prob = list(map(str, prob))
     tmp = ann[4].strip().split(" ")
@@ -153,15 +152,15 @@ generate8statesANN("flatpsi", prob_hh, flatpsi_ann)
 if not args.fast:
     generate8statesANN("flatblast", prob_psi, flatblast_ann)
 
-    flatblastpsi_ann = open(pid+".flatblastpsi.ann", "r").readlines()
+    flatblastpsi_ann = open(filename+".flatblastpsi.ann", "r").readlines()
     generate8statesANN("flatblastpsi", prob_psihh, flatblastpsi_ann)
 
 
 ### predict in 8 classes
-os.system('%s %smodelv8_ss8 %s.flatpsi.ann+ss3 > /dev/null' % (predict, models, pid))
+os.system('%s %smodelv8_ss8 %s.flatpsi.ann+ss3 > /dev/null' % (predict, models, filename))
 if not args.fast:
-    os.system('%s %smodelv7_ss8 %s.flatblast.ann+ss3 > /dev/null' % (predict, models, pid))
-    os.system('%s %smodelv78_ss8 %s.flatblastpsi.ann+ss3 > /dev/null' % (predict, models, pid))
+    os.system('%s %smodelv7_ss8 %s.flatblast.ann+ss3 > /dev/null' % (predict, models, filename))
+    os.system('%s %smodelv78_ss8 %s.flatblastpsi.ann+ss3 > /dev/null' % (predict, models, filename))
 time5 = time.time()
 print('Prediction in 8 classes made in %.2fs' % (time5-time4))
 
@@ -170,13 +169,13 @@ print('Prediction in 8 classes made in %.2fs' % (time5-time4))
 secstruc = {0 : "G", 1 : "H", 2 : "I", 3 : "E", 4 : "B", 5 : "C", 6 : "S", 7 : "T"}
 SS = [0] * 8
 
-prediction = open(pid+".ss8", "w")
+prediction = open(filename+".ss8", "w")
 prediction.write("#\tAA\tSS\tG\tH\tI\tE\tB\tC\tS\tT\n")
 
-prob_hh = list(map(float, open(pid+".flatpsi.ann+ss3.probsF", "r").readlines()[3].split()))
+prob_hh = list(map(float, open(filename+".flatpsi.ann+ss3.probsF", "r").readlines()[3].split()))
 if not args.fast:
-    prob_psi = list(map(float, open(pid+".flatblast.ann+ss3.probsF", "r").readlines()[3].split()))
-    prob_psihh = list(map(float, open(pid+".flatblastpsi.ann+ss3.probsF", "r").readlines()[3].split()))
+    prob_psi = list(map(float, open(filename+".flatblast.ann+ss3.probsF", "r").readlines()[3].split()))
+    prob_psihh = list(map(float, open(filename+".flatblastpsi.ann+ss3.probsF", "r").readlines()[3].split()))
 
     for i in range(length):
         for j in range(8):
@@ -195,4 +194,4 @@ timeEND = time.time()
 print('Porter5 executed on %s in %.2fs (TOTAL)' % (filename, timeEND-time0))
 
 ### remove all the temporary files
-os.system('rm %s.flatblast.ann+ss3.probs %s.flatpsi.ann.probs %s.flatblast.ann.probs %s.psi %s.flatblastpsi.ann+ss3.probsF %s.flatblast.ann+ss3 %s.flatblastpsi.ann.probsF %s.flatblastpsi.ann %s.flatpsi.ann+ss3.probsF %s.flatpsi.ann %s.flatblast %s.flatblastpsi.ann+ss3.probs %s.flatblastpsi.ann+ss3 %s.flatblastpsi.ann.probs %s.flatpsi %s.flatpsi.ann+ss3.probs %s.flatblast.ann %s.chk %s.flatblast.ann+ss3.probsF %s.flatpsi.ann+ss3 %s.flatpsi.ann.probsF %s.blastpgp %s.flatblast.app %s.flatblast.ann.probsF %s.hhr %s.log 2> /dev/null' % (pid, pid, pid, pid, pid, pid, pid, pid, pid, pid, pid, pid, pid, pid, pid, pid, pid, pid, pid, pid, pid, pid, pid, pid, pid, pid))
+os.system('rm %s.flatblast.ann+ss3.probs %s.flatpsi.ann.probs %s.flatblast.ann.probs %s.psi %s.flatblastpsi.ann+ss3.probsF %s.flatblast.ann+ss3 %s.flatblastpsi.ann.probsF %s.flatblastpsi.ann %s.flatpsi.ann+ss3.probsF %s.flatpsi.ann %s.flatblast %s.flatblastpsi.ann+ss3.probs %s.flatblastpsi.ann+ss3 %s.flatblastpsi.ann.probs %s.flatpsi %s.flatpsi.ann+ss3.probs %s.flatblast.ann %s.chk %s.flatblast.ann+ss3.probsF %s.flatpsi.ann+ss3 %s.flatpsi.ann.probsF %s.blastpgp %s.flatblast.app %s.flatblast.ann.probsF %s.hhr %s.log 2> /dev/null' % (filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename))
