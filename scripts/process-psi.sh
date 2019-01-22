@@ -4,7 +4,7 @@
 # the number of alignments and the sequences in the following lines
 
 
-ff=`echo $1 | sed 's/\.psi/\.flatpsi/g'`
+ff=`echo $1 | sed -e 's/\.psi/\.flatpsi/g'`
 wc -l $1 |awk '{print $1}' > $ff
 awk '{print $2}' $1 >> $ff
 sed -i'' -e 's/-/./g' $ff
