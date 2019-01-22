@@ -20,5 +20,5 @@ ls models/SS8/*HHpsi3* >> models/modelv78_ss8
 
 
 abs_path=`pwd`
-sed "s|models|$abs_path\/models|g" models/modelv* -i
+sed -i'' -e "s|models|$abs_path\/models|g" models/modelv*
 cd ../../
