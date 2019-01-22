@@ -7,5 +7,5 @@
 ff=`echo $1 | sed 's/\.psi/\.flatpsi/g'`
 wc -l $1 |awk '{print $1}' > $ff
 awk '{print $2}' $1 >> $ff
-sed 's/-/./g' $ff -i
-sed '2s/\.//g' $ff -i
+sed -i'' -e 's/-/./g' $ff
+sed -i'' -e '2s/\.//g' $ff
