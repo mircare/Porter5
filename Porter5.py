@@ -1,8 +1,12 @@
 import argparse, configparser
 import os, sys
 import time
- 
 
+## check Python version
+if sys.version_info[0] < 3:
+   print("Python2 detected, please use Python3.")
+   exit()
+   
 ### set argparse
 parser = argparse.ArgumentParser(description="This is the standalone of Porter5. It is sufficient to run it on a FASTA file to start the prediction of its Secondary Structure in 3- and 8-classes", 
 epilog="E.g., to run Porter on 4 cores: python3 Porter5.py -i example/2FLGA.fasta --cpu 4")
@@ -133,7 +137,6 @@ prediction.close()
 
 
 ######## eight-state prediction ########
-
 def generate8statesANN(extension, prob, ann):
     input_size = int(ann[1].split()[0])
 
