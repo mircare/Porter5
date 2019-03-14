@@ -32,12 +32,12 @@ $ tar zxvf Porter5.tgz
 1. UniRef90 (ftp://ftp.uniprot.org/pub/databases/uniprot/uniref/uniref90/uniref90.fasta.gz).
 
 
-## How to run Porter 5 with/without PSI-BLAST
+## How to run Porter 5
 ```
-# To exploit HHblits only (for fast and accurate predictions)
+# For fast and accurate predictions (exploiting HHblits only)
 $ python3 Porter5/Porter5.py -i Porter5/example/2FLGA.fasta --cpu 4 --fast
 
-# To exploit both PSI-BLAST and HHblits (for very accurate predictions)
+# For very accurate predictions (exploiting both HHblits and PSI-BLAST)
 $ python3 Porter5/Porter5.py -i Porter5/example/2FLGA.fasta --cpu 4
 ```
 
