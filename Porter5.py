@@ -33,7 +33,7 @@ if not os.path.exists(path+"/config.ini") or args.setup:
     psiblast = input("Please insert the absolute path to psiblast (e.g., /home/username/psiblast): ")
     uniref90 = input("Please insert the absolute path to uniref90 (e.g., /home/username/UniProt/uniref90.fasta): ")
     hhblits = input("Please insert the call to HHblits (e.g., hhblits): ")
-    uniprot20 = input("Please insert the absolute path to uniprot20 followed by the database name (e.g., /home/username/uniprot20_2016_02/uniprot20_2016_02): ")
+    uniprot20 = input("Please insert the absolute path to uniprot20 - DATABASE NAME INCLUDED (e.g., /home/username/uniprot20_2016_02/uniprot20_2016_02): ")
     
     config['DEFAULT'] = {'psiblast': psiblast,
                     'uniref90': uniref90,
