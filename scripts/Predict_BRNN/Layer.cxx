@@ -8,7 +8,7 @@
 
 #include "Layer.h"
 #include <stdlib.h>
-#include <omp.h>
+//#include <omp.h>
 
 #define miny 1e-4
 
