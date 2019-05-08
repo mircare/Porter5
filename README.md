@@ -4,21 +4,19 @@
 The web server of Porter 5 is available at http://distilldeep.ucd.ie/porter/.   
 The train and test sets are available at http://distilldeep.ucd.ie/porter/data/.
 
-More protein structure annotation predicted at http://distilldeep.ucd.ie/brewery/.
+More protein structure annotations predicted at http://distilldeep.ucd.ie/brewery/.
 
-### Reference
+### References
 Porter 5: fast, state-of-the-art ab initio prediction of protein secondary structure in 3 and 8 classes<br>
 Mirko Torrisi, Manaz Kaleel and Gianluca Pollastri; bioRxiv 289033; doi: https://doi.org/10.1101/289033.
+
+Protein Structure Annotations; Essentials of Bioinformatics, Volume I. Springer Nature<br>
+Mirko Torrisi and Gianluca Pollastri; doi: https://doi.org/10.1007/978-3-030-02634-9_10.
 
 
 ## Setup
 ```
 $ git clone https://github.com/mircare/Porter5/
-```
-or
-```
-$ wget http://distilldeep.ucd.ie/porter/data/Porter5.tgz
-$ tar zxvf Porter5.tgz
 ```
 
 ### Requirements
@@ -47,11 +45,11 @@ $ python3 Porter5/Porter5.py -i Porter5/example/2FLGA.fasta --cpu 4
 | **Porter 5** | **83.81%** | **80.41%** | **84.32%** | **81.05%** |
 | SPIDER 3 | 83.15% | 79.43% | 83.42% | 79.79% |
 | **Porter 5 *HHblits only*** | **83.06%** | **79.49%** | **83.68%** | **80.26%** |
-| SSpro 5 *with templates* | 82.58% | 78.54% | 83.94% | 80.29% |
+| SSpro 5.1 *with templates* | 82.58% | 78.54% | 83.94% | 80.29% |
 | PSIPRED 4.01 | 81.88% | 77.36% | 82.48% | 78.22% |
 | RaptorX-Property | 81.86% | 78.08% | 82.57% | 78.99% |
 | Porter 4 | 81.66% | 78.05% | 82.29% | 78.61% | 
-| SSpro5 *ab initio* | 81.17% | 76.87% | 81.10% | 76.92% |
+| SSpro 5.1 *ab initio* | 81.17% | 76.87% | 81.10% | 76.92% |
 | DeepCNF | 81.04% | 76.74% | 81.16% | 76.99% |
 
 Calculated with http://dna.cs.miami.edu/SOV/.
@@ -59,12 +57,12 @@ Calculated with http://dna.cs.miami.edu/SOV/.
 ## Performances in 8 states on large independent test set in 
 | Method | Q8 per AA | SOV8'99 per AA | Q8 per protein | SOV8'99 per protein |
 | :--- | :---: | :---: | :---: | :---: |
-| **Porter5** | **73.02%** | **69.91%** | **73.92%** | **70.76%** |
-| SSpro 5 *with templates* | 71.91% | 68.68% | 74.46% | 71.74% |
-| **Porter5 *HHblits only*** | **71.8%** | **68.87%** | **72.83%** | **69.79%** |
+| **Porter 5** | **73.02%** | **69.91%** | **73.92%** | **70.76%** |
+| SSpro 5.1 *with templates* | 71.91% | 68.68% | 74.46% | 71.74% |
+| **Porter 5 *HHblits only*** | **71.8%** | **68.87%** | **72.83%** | **69.79%** |
 | RaptorX-Property | 70.74% | 67.59% | 71.78% | 68.36% |
 | DeepCNF | 69.76% | 66.42% | 70.14% | 66.44% |
-| SSpro5 *ab initio* | 68.85% | 65.33% | 69.27% | 65.97% |
+| SSpro 5.1 *ab initio* | 68.85% | 65.33% | 69.27% | 65.97% |
 
 Calculated with http://dna.cs.miami.edu/SOV/.
 
