@@ -8,22 +8,23 @@ if sys.version_info[0] < 3:
    exit()
    
 ### set argparse
-parser = argparse.ArgumentParser(description="This is the standalone of Porter5. It is sufficient to run it on a FASTA file to start the prediction of its Secondary Structure in 3- and 8-classes", 
+parser = argparse.ArgumentParser(description="This is the standalone of Porter5. It is sufficient to run it on a FASTA file to start the prediction of its Secondary Structure in 3- and 8-classes.\
+    Please run multiple_fasta.py if you have multiple protein sequences to predict, or split_fasta.py if you have one fasta file with multiple protein sequences.", 
 epilog="E.g., to run Porter on 4 cores: python3 Porter5.py -i example/2FLGA.fasta --cpu 4")
-parser.add_argument("-i", "--input", type=str, nargs=1, help="indicate the FASTA file containing the protein to predict.")
-parser.add_argument("--cpu", type=int, default=1, help="specify how many cores to assign to this prediction.")
+parser.add_argument("-i", type=str, nargs=1, help="Indicate the FASTA file containing the protein to predict.")
+parser.add_argument("--cpu", type=int, default=1, help="Specify how many cores to assign to this prediction.")
 parser.add_argument("--fast", help="Use only HHblits (skipping PSI-BLAST) to perform a faster prediction.", action="store_true")
 parser.add_argument("--tmp", help="Leave output files of HHblits and PSI-BLAST, i.e. log, hhr, psi, chk, and blastpgp files.", action="store_true")
-parser.add_argument("--setup", help="Initialize Porter5 from scratch. Run it when there has been any change involving (PSI-BLAST, HHblits, Porter itself, etc.", action="store_true")
+parser.add_argument("--setup", help="Initialize Porter5 from scratch. Run it when there has been any change involving PSI-BLAST, HHblits, Porter itself, etc.", action="store_true")
 args = parser.parse_args()
 
 ## check arguments
-if not args.input:
-    print("Usage: python3 "+sys.argv[0]+" -i <fasta_file> [--cpu CPU_number] [--fast]\n--help to display the help")
+if not args.i:
+    print("Usage: python3 "+sys.argv[0]+" -i <fasta_file> [--cpu CPU_number] [--fast]\n--help for the full list of commands")
     exit()
 
 # save protein path and name, and current PATH
-filename = "".join(args.input)
+filename = "".join(args.i)
 path = os.path.abspath(sys.argv[0].replace("Porter5.py","scripts/"))
 predict = path+"/Predict_BRNN/Predict"
 models = path+"/Predict_BRNN/models/"
@@ -200,4 +201,4 @@ print('Porter5 executed on %s in %.2fs (TOTAL)' % (filename, timeEND-time0))
 ### remove temporary files
 os.system('rm -f %s.flatblast.ann+ss3.probs %s.flatpsi.ann.probs %s.flatblast.ann.probs %s.flatblastpsi.ann+ss3.probsF %s.flatblast.ann+ss3 %s.flatblastpsi.ann.probsF %s.flatblastpsi.ann %s.flatpsi.ann+ss3.probsF %s.flatpsi.ann %s.flatblast %s.flatblastpsi.ann+ss3.probs %s.flatblastpsi.ann+ss3 %s.flatblastpsi.ann.probs %s.flatpsi %s.flatpsi.ann+ss3.probs %s.flatblast.ann %s.flatblast.ann+ss3.probsF %s.flatpsi.ann+ss3 %s.flatpsi.ann.probsF %s.flatblast.app %s.flatblast.ann.probsF 2> /dev/null' % (filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename))
 if not args.tmp:
-    os.system('rm -f %s.blastpgp, %s.chk, %s.hhr, %s.psi, %.log 2> /dev/null', (filename, filename, filename, filename, filename))
+    os.system('rm -f %s.blastpgp, %s.chk, %s.hhr, %s.psi, %s.log 2> /dev/null' % (filename, filename, filename, filename, filename))
