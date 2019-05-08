@@ -39,6 +39,18 @@ $ python3 Porter5/Porter5.py -i Porter5/example/2FLGA.fasta --cpu 4 --fast
 $ python3 Porter5/Porter5.py -i Porter5/example/2FLGA.fasta --cpu 4
 ```
 
+### How to run Porter 5 on multiple sequences
+```
+# To split a FASTA file with multiple sequences
+$ python3 Porter5/split_fasta.py many_sequences.fasta
+
+# To predict all the fasta files in a given directory (Fastas)
+$ python3 Porter5/multiple_fasta.py -i Fastas/ --cpu 4 --fast
+
+# To run multiple predictions in parallel (using a total of 8 cores)
+$ python3 Porter5/multiple_fasta.py -i Fastas/ --cpu 4 --parallel 2 --fast
+```
+
 ## Performances in 3 states on large independent test set
 | Method | Q3 per AA | SOV'99 per AA | Q3 per protein | SOV'99 per protein |
 | :--- | :---: | :---: | :---: | :---: |
