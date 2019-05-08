@@ -13,6 +13,7 @@ epilog="E.g., to run Porter on 4 cores: python3 Porter5.py -i example/2FLGA.fast
 parser.add_argument("-i", "--input", type=str, nargs=1, help="indicate the FASTA file containing the protein to predict.")
 parser.add_argument("--cpu", type=int, default=1, help="specify how many cores to assign to this prediction.")
 parser.add_argument("--fast", help="Use only HHblits (skipping PSI-BLAST) to perform a faster prediction.", action="store_true")
+parser.add_argument("--tmp", help="Leave output files of HHblits and PSI-BLAST, i.e. log, hhr, psi, chk, and blastpgp files.", action="store_true")
 parser.add_argument("--setup", help="Initialize Porter5 from scratch. Run it when there has been any change involving (PSI-BLAST, HHblits, Porter itself, etc.", action="store_true")
 args = parser.parse_args()
 
@@ -196,5 +197,7 @@ prediction.close()
 timeEND = time.time()
 print('Porter5 executed on %s in %.2fs (TOTAL)' % (filename, timeEND-time0))
 
-### remove all the temporary files
-os.system('rm %s.flatblast.ann+ss3.probs %s.flatpsi.ann.probs %s.flatblast.ann.probs %s.psi %s.flatblastpsi.ann+ss3.probsF %s.flatblast.ann+ss3 %s.flatblastpsi.ann.probsF %s.flatblastpsi.ann %s.flatpsi.ann+ss3.probsF %s.flatpsi.ann %s.flatblast %s.flatblastpsi.ann+ss3.probs %s.flatblastpsi.ann+ss3 %s.flatblastpsi.ann.probs %s.flatpsi %s.flatpsi.ann+ss3.probs %s.flatblast.ann %s.chk %s.flatblast.ann+ss3.probsF %s.flatpsi.ann+ss3 %s.flatpsi.ann.probsF %s.blastpgp %s.flatblast.app %s.flatblast.ann.probsF %s.hhr %s.log 2> /dev/null' % (filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename))
+### remove temporary files
+os.system('rm -f %s.flatblast.ann+ss3.probs %s.flatpsi.ann.probs %s.flatblast.ann.probs %s.flatblastpsi.ann+ss3.probsF %s.flatblast.ann+ss3 %s.flatblastpsi.ann.probsF %s.flatblastpsi.ann %s.flatpsi.ann+ss3.probsF %s.flatpsi.ann %s.flatblast %s.flatblastpsi.ann+ss3.probs %s.flatblastpsi.ann+ss3 %s.flatblastpsi.ann.probs %s.flatpsi %s.flatpsi.ann+ss3.probs %s.flatblast.ann %s.flatblast.ann+ss3.probsF %s.flatpsi.ann+ss3 %s.flatpsi.ann.probsF %s.flatblast.app %s.flatblast.ann.probsF 2> /dev/null' % (filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename, filename))
+if not args.tmp:
+    os.system('rm -f %s.blastpgp, %s.chk, %s.hhr, %s.psi, %.log 2> /dev/null', (filename, filename, filename, filename, filename))
