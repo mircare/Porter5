@@ -1,3 +1,6 @@
+# Usage: python3 Porter5.py -i Fastas/ --cpu 4 --parallel 2
+# (run 2 parallel instances of Porter5 on 4 cores - total of 8 cores)
+
 import os, sys
 import argparse
 from multiprocessing import Pool
@@ -15,7 +18,7 @@ def loop(line):
 
 ### set argparse
 parser = argparse.ArgumentParser(description="This is the standalone of Porter5 for multiple inputs. It is sufficient to specify a directory containing FASTA files to start the prediction of their Secondary Structure in 3- and 8-classes. It is also possible to run multiple predictions in parallel (TOTAL cpu = --cpu x --parallel). Please run Porter5.py if you have only 1 protein sequence to predict.", 
-epilog="E.g., to run 2 instances of Porter on 4 cores (total of 8 cores): python3 Porter5.py -i Fastas/ --cpu 4 --parallel 2")
+epilog="E.g., to run 2 instances of Porter5 on 4 cores (total of 8 cores): python3 Porter5.py -i Fastas/ --cpu 4 --parallel 2")
 parser.add_argument("-i", type=str, nargs=1, help="Indicate the directory containing the FASTA files.")
 parser.add_argument("--cpu", type=int, default=1, help="Specify how many cores to assign to each prediction.")
 parser.add_argument("--parallel", type=int, default=1, help="Specify how many instances to run in parallel.")
