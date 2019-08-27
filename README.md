@@ -8,7 +8,7 @@ More protein structure annotations predicted at http://distilldeep.ucd.ie/brewer
 
 ### References
 Deeper Profiles and Cascaded Recurrent and Convolutional Neural Networks for state-of-the-art Protein Secondary Structure Prediction, Scientific Reports, Nature Publishing Group<br>
-Mirko Torrisi, Manaz Kaleel and Gianluca Pollastri; doi: https://doi.org/10.1038/s41598-019-48786-x
+Mirko Torrisi, Manaz Kaleel and Gianluca Pollastri; doi: https://doi.org/10.1038/s41598-019-48786-x.
 
 Porter 5: fast, state-of-the-art ab initio prediction of protein secondary structure in 3 and 8 classes<br>
 Mirko Torrisi, Manaz Kaleel and Gianluca Pollastri; bioRxiv 289033; doi: https://doi.org/10.1101/289033.
@@ -44,7 +44,7 @@ $ python3 Porter5/Porter5.py -i Porter5/example/2FLGA.fasta --cpu 4
 
 ### How to run Porter 5 on multiple sequences
 ```
-# To split a FASTA file with multiple sequences
+# To split a FASTA file with multiple sequences (Optional)
 $ python3 Porter5/split_fasta.py many_sequences.fasta
 
 # To predict all the fasta files in a given directory (Fastas)
