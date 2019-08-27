@@ -38,6 +38,13 @@ if not os.path.isfile(executable):
     print("\n---->>No executable retrieved at", executable)
     exit()
 
+if not os.path.isdir("".join(args.i)):
+    print("\n---->>","".join(args.i),"isn't a directory! Please consider running split_fasta.py.")
+    exit()
+
+if not os.path.isfile(os.path.abspath(os.path.dirname(sys.argv[0]))+"/scripts/config.ini") or args.setup:
+    os.system("python3 %s --setup" % executable)
+
 # fetch all the inputs from the passed directory, and sort them by size
 os.chdir("".join(args.i))
 sorted_files = sorted(os.listdir(os.getcwd()), key = os.path.getsize, reverse=True)
