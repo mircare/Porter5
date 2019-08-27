@@ -42,6 +42,6 @@ if not os.path.isfile(executable):
 os.chdir("".join(args.i))
 sorted_files = sorted(os.listdir(os.getcwd()), key = os.path.getsize, reverse=True)
 
-#ligth the bomb // launch the parralel code
+#ligth the bomb // launch the parallel code
 with Pool(args.parallel) as p:
     p.map(loop, sorted_files, 1)
