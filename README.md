@@ -7,6 +7,9 @@ The train and test sets are available at http://distilldeep.ucd.ie/porter/data/.
 More protein structure annotations predicted at http://distilldeep.ucd.ie/brewery/.
 
 ### References
+Deeper Profiles and Cascaded Recurrent and Convolutional Neural Networks for state-of-the-art Protein Secondary Structure Prediction, Scientific Reports, Nature Publishing Group<br>
+Mirko Torrisi, Manaz Kaleel and Gianluca Pollastri; doi: https://doi.org/10.1038/s41598-019-48786-x
+
 Porter 5: fast, state-of-the-art ab initio prediction of protein secondary structure in 3 and 8 classes<br>
 Mirko Torrisi, Manaz Kaleel and Gianluca Pollastri; bioRxiv 289033; doi: https://doi.org/10.1101/289033.
 
