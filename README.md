@@ -54,16 +54,20 @@ $ python3 Porter5/multiple_fasta.py -i Fastas/ --cpu 4 --fast
 $ python3 Porter5/multiple_fasta.py -i Fastas/ --cpu 4 --parallel 2 --fast
 ```
 
-## Use the docker image
+### Use the docker image
 ```
-# Set-up docker image (adjust the PATHs to the databases and to the fasta files accordingly)
+# Set-up docker image
 $ docker pull mircare/porter5
+
+# adjust the PATHs to databases and query sequences (stored locally)
 $ docker run --name porter5 -v /**PATH_to_uniprot20_2016_02**:/uniprot20 \
 -v /**PATH_to_UniRef90**:/uniref90 -v /**PATH_to_fasta**/:Porter5/query \
 --cap-add IPC_LOCK mircare/porter5 sleep infinity &
-# How to run a prediction from the docker container
+
+# How to run a prediction
 $ docker exec porter5 python3 Porter5.py -i query/2FLGA.fasta --cpu 5 --fast
 ```
+
 
 ## Performances in 3 states on large independent test set
 | Method | Q3 per AA | SOV'99 per AA | Q3 per protein | SOV'99 per protein |
