@@ -1,4 +1,3 @@
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/deeper-profiles-and-cascaded-recurrent-and/protein-secondary-structure-prediction-on-4)](https://paperswithcode.com/sota/protein-secondary-structure-prediction-on-4?p=deeper-profiles-and-cascaded-recurrent-and)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/deeper-profiles-and-cascaded-recurrent-and/protein-secondary-structure-prediction-on-2)](https://paperswithcode.com/sota/protein-secondary-structure-prediction-on-2?p=deeper-profiles-and-cascaded-recurrent-and)
 
 # Porter 5 
