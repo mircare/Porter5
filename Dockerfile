@@ -7,7 +7,7 @@ RUN apt-get install git python3 python3-numpy hhsuite ncbi-blast+ -y
 RUN apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
 
 # get Porter5
-RUN git clone https://github.com/mircare/Porter5/
+RUN git clone https://github.com/mircare/Porter5/ --depth 1 && rm -rf Porter5/.git
 RUN git clone http://github.com/soedinglab/hh-suite
 
 ENV HHLIB=/hh-suite
