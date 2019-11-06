@@ -21,7 +21,7 @@ Mirko Torrisi and Gianluca Pollastri; doi: https://doi.org/10.1007/978-3-030-026
 
 ## Setup
 ```
-$ git clone https://github.com/mircare/Porter5/
+$ git clone https://github.com/mircare/Porter5/ --depth 1 && rm -rf Porter5/.git
 ```
 
 ### Requirements
