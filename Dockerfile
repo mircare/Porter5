@@ -21,6 +21,6 @@ RUN echo "hhblits = hhblits" >> Porter5/scripts/config.ini
 RUN echo "uniprot20 = /uniprot20/uniprot20_2016_02" >> Porter5/scripts/config.ini
 
 WORKDIR /Porter5/scripts/Predict_BRNN
-RUN bash set_models.sh && chmod a+x Predict
+RUN bash set_models.sh && make -B && chmod a+x Predict
 
 WORKDIR /Porter5
