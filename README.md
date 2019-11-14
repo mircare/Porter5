@@ -61,12 +61,12 @@ $ python3 Porter5/multiple_fasta.py -i Fastas/ --cpu 4 --parallel 2 --fast
 # Set-up docker image
 $ docker pull mircare/porter5
 
-# adjust the PATHs to databases and query sequences (stored locally)
+# set the absolute PATHs for databases and query sequences (stored locally)
 $ docker run --name porter5 -v /**PATH_to_uniprot20_2016_02**:/uniprot20 \
--v /**PATH_to_UniRef90**:/uniref90 -v /**PATH_to_fasta**/:Porter5/query \
+-v /**PATH_to_UniRef90_optional**:/uniref90 -v /**PATH_to_fasta_to_predict**:/Porter5/query \
 --cap-add IPC_LOCK mircare/porter5 sleep infinity &
 
-# How to run a prediction
+# How to run a prediction using 5 cores and HHblits only
 $ docker exec porter5 python3 Porter5.py -i query/2FLGA.fasta --cpu 5 --fast
 ```
 
