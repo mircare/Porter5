@@ -16,7 +16,7 @@ ENV PATH="$HHLIB/bin:$HHLIB/scripts:${PATH}"
 # initialize Porter5
 RUN echo "[DEFAULT]" >> Porter5/scripts/config.ini
 RUN echo "psiblast = psiblast" >> Porter5/scripts/config.ini
-RUN echo "uniref90 = /uniref90/uniref90_2018-03.fasta" >> Porter5/scripts/config.ini
+RUN echo "uniref90 = /uniref90/uniref90.fasta" >> Porter5/scripts/config.ini
 RUN echo "hhblits = hhblits" >> Porter5/scripts/config.ini
 RUN echo "uniprot20 = /uniprot20/uniprot20_2016_02" >> Porter5/scripts/config.ini
 
