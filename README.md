@@ -89,7 +89,7 @@ Calculated with http://dna.cs.miami.edu/SOV/.
 
 Calculated with http://dna.cs.miami.edu/SOV/.
 
-### Citation
+## Citation
 If you use Porter 5, please cite our Scientific Reports paper:
 ```
 @article{torrisi_porter_2019,
@@ -104,9 +104,12 @@ If you use Porter 5, please cite our Scientific Reports paper:
 }
 ```
 
-### References
+## References
 Deeper Profiles and Cascaded Recurrent and Convolutional Neural Networks for state-of-the-art Protein Secondary Structure Prediction, Scientific Reports, Nature Publishing Group;<br>
 Mirko Torrisi, Manaz Kaleel and Gianluca Pollastri; doi: https://doi.org/10.1038/s41598-019-48786-x.
+
+Protein Structure Annotations; Essentials of Bioinformatics, Volume I. Springer Nature<br>
+Mirko Torrisi and Gianluca Pollastri; doi: https://doi.org/10.1007/978-3-030-02634-9_10.
 
 Brewery: Deep Learning and deeper profiles for the prediction of 1D protein structure annotations,<br>
 Bioinformatics, Oxford University Press; Mirko Torrisi and Gianluca Pollastri;<br>
@@ -115,8 +118,6 @@ Toll-free link: https://academic.oup.com/bioinformatics/advance-article/doi/10.1
 Porter 5: fast, state-of-the-art ab initio prediction of protein secondary structure in 3 and 8 classes<br>
 Mirko Torrisi, Manaz Kaleel and Gianluca Pollastri; bioRxiv 289033; doi: https://doi.org/10.1101/289033.
 
-Protein Structure Annotations; Essentials of Bioinformatics, Volume I. Springer Nature<br>
-Mirko Torrisi and Gianluca Pollastri; doi: https://doi.org/10.1007/978-3-030-02634-9_10.
 
 ## License
 This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
