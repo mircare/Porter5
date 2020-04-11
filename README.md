@@ -1,23 +1,14 @@
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/deeper-profiles-and-cascaded-recurrent-and/protein-secondary-structure-prediction-on-2)](https://paperswithcode.com/sota/protein-secondary-structure-prediction-on-2?p=deeper-profiles-and-cascaded-recurrent-and)
+[![PWC](https://camo.githubusercontent.com/6887feb0136db5156c4f4146e3dd2681d06d9c75/68747470733a2f2f692e6372656174697665636f6d6d6f6e732e6f72672f6c2f62792d6e632d73612f342e302f38387833312e706e67)](https://github.com/mircare/Porter5/#license)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/deeper-profiles-and-cascaded-recurrent-and/protein-secondary-structure-prediction-on-2)](https://paperswithcode.com/sota/protein-secondary-structure-prediction-on-2?p=deeper-profiles-and-cascaded-recurrent-and)  
+
 
 # Porter 5 
 ### Light, fast and high quality prediction of protein secondary structure in 3 and 8 classes
 
-The web server of Porter 5 is available at http://distilldeep.ucd.ie/porter/.   
-The train and test sets are available at http://distilldeep.ucd.ie/porter/data/.
+The web server, train and test sets of Porter 5 are available at http://distilldeep.ucd.ie/porter/.   
+The docker container is available at https://hub.docker.com/r/mircare/porter5 ([HOWTO](https://github.com/mircare/Porter5/#use-the-docker-image)).     
 
-More protein structure annotations predicted at http://distilldeep.ucd.ie/brewery/.
-
-### References
-Deeper Profiles and Cascaded Recurrent and Convolutional Neural Networks for state-of-the-art Protein Secondary Structure Prediction, Scientific Reports, Nature Publishing Group<br>
-Mirko Torrisi, Manaz Kaleel and Gianluca Pollastri; doi: https://doi.org/10.1038/s41598-019-48786-x.
-
-Porter 5: fast, state-of-the-art ab initio prediction of protein secondary structure in 3 and 8 classes<br>
-Mirko Torrisi, Manaz Kaleel and Gianluca Pollastri; bioRxiv 289033; doi: https://doi.org/10.1101/289033.
-
-Protein Structure Annotations; Essentials of Bioinformatics, Volume I. Springer Nature<br>
-Mirko Torrisi and Gianluca Pollastri; doi: https://doi.org/10.1007/978-3-030-02634-9_10.
-
+See https://github.com/mircare/Brewery to predict more protein structure annotations.
 
 ## Setup
 ```
@@ -98,6 +89,34 @@ Calculated with http://dna.cs.miami.edu/SOV/.
 
 Calculated with http://dna.cs.miami.edu/SOV/.
 
+### Citation
+If you use Porter 5, please cite our Scientific Reports paper:
+```
+@article{torrisi_porter_2019,
+	title = {Deeper Profiles and Cascaded Recurrent and Convolutional Neural Networks for state-of-the-art Protein Secondary Structure Prediction},
+	volume = {9},
+	issn = {2045-2322},
+	doi = {10.1038/s41598-019-48786-x},
+	journal = {Scientific Reports},
+	author = {Torrisi, Mirko and Kaleel, Manaz and Pollastri, Gianluca},
+	month = aug,
+	year = {2019}
+}
+```
+
+### References
+Deeper Profiles and Cascaded Recurrent and Convolutional Neural Networks for state-of-the-art Protein Secondary Structure Prediction, Scientific Reports, Nature Publishing Group;<br>
+Mirko Torrisi, Manaz Kaleel and Gianluca Pollastri; doi: https://doi.org/10.1038/s41598-019-48786-x.
+
+Brewery: Deep Learning and deeper profiles for the prediction of 1D protein structure annotations,<br>
+Bioinformatics, Oxford University Press; Mirko Torrisi and Gianluca Pollastri;<br>
+Toll-free link: https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btaa204/5811232?guestAccessKey=9a73ae2a-2cb6-4fe1-b333-a4f3261f02cf.
+
+Porter 5: fast, state-of-the-art ab initio prediction of protein secondary structure in 3 and 8 classes<br>
+Mirko Torrisi, Manaz Kaleel and Gianluca Pollastri; bioRxiv 289033; doi: https://doi.org/10.1101/289033.
+
+Protein Structure Annotations; Essentials of Bioinformatics, Volume I. Springer Nature<br>
+Mirko Torrisi and Gianluca Pollastri; doi: https://doi.org/10.1007/978-3-030-02634-9_10.
 
 ## License
 This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
