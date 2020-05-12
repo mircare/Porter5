@@ -10,6 +10,8 @@ The docker container is available at https://hub.docker.com/r/mircare/porter5 ([
 
 See https://github.com/mircare/Brewery to predict more protein structure annotations.
 
+<p align="center"><img src="https://github.com/mircare/Brewery/blob/master/diagram%20pipeline.png" alt="Pipeline of Brewery">Diagram of the pipeline we propose to gather and exploit deeper profiles.</p>
+
 ## Setup
 ```
 $ git clone https://github.com/mircare/Porter5/ --depth 1 && rm -rf Porter5/.git
