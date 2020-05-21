@@ -8,7 +8,7 @@
 The web server, train and test sets of Porter 5 are available at http://distilldeep.ucd.ie/porter/.   
 The docker container is available at https://hub.docker.com/r/mircare/porter5 ([HOWTO](https://github.com/mircare/Porter5/#use-the-docker-image)).     
 
-See https://github.com/mircare/Brewery to predict more protein structure annotations.
+See https://github.com/mircare/Brewery to predict more protein structure annotations, *and **COVID-19** predictions*.
 
 <p align="center"><img src="https://github.com/mircare/Brewery/blob/master/diagram%20pipeline.png" alt="Pipeline of Brewery">Diagram of the pipeline we propose to gather and exploit deeper profiles.</p>
 
